@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app-blue:
+    container_name: one-api
+    image: one-api
+    restart: always
+    build: ../
+    ports:
+      - 5000:3000
+    volumes:
+      - ./data:/data
+      - ./logs:/app/logs
+    environment:
+      # - SQL_DSN=root:123456@tcp(host.docker.internal:3306)/one-api  # 修改此行，或注释掉以使用 SQLite 作为数据库
+      - REDIS_CONN_STRING=redis://127.0.0.1:6379
+      - SESSION_SECRET=GtLgDp1hQHuorEk5nbe7pQfFwB8hJo38sCiXMcxtFGGdzn93  # 修改为随机字符串
+      - TZ=Asia/Shanghai
+      - GLOBAL_API_RATE_LIMIT=60000
+      # - NODE_TYPE=slave  # 多机部署时从节点取消注释该行
+      # - SYNC_FREQUENCY=60  # 需要定期从数据库加载数据时取消注释该行
+      # - FRONTEND_BASE_URL=https://openai.justsong.cn  # 多机部署时从节点取消注释该行
+
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -s http://localhost:3000/api/status | grep -o '\"success\":\\s*true' | awk '{print $2}' | grep 'true'" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3

@@ -7,15 +7,15 @@ import { ITEMS_PER_PAGE } from '../constants';
 import { renderQuota } from '../helpers/render';
 
 const COPY_OPTIONS = [
-  { key: 'next', text: 'ChatGPT Next Web', value: 'next' },
-  { key: 'ama', text: 'BotGem', value: 'ama' },
-  { key: 'opencat', text: 'OpenCat', value: 'opencat' },
+  // { key: 'next', text: 'ChatGPT Next Web', value: 'next' },
+  // { key: 'ama', text: 'BotGem', value: 'ama' },
+  // { key: 'opencat', text: 'OpenCat', value: 'opencat' },
 ];
 
 const OPEN_LINK_OPTIONS = [
-  { key: 'next', text: 'ChatGPT Next Web', value: 'next' },
-  { key: 'ama', text: 'BotGem', value: 'ama' },
-  { key: 'opencat', text: 'OpenCat', value: 'opencat' },
+  // { key: 'next', text: 'ChatGPT Next Web', value: 'next' },
+  // { key: 'ama', text: 'BotGem', value: 'ama' },
+  // { key: 'opencat', text: 'OpenCat', value: 'opencat' },
 ];
 
 function renderTimestamp(timestamp) {
